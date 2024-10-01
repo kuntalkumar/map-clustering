@@ -5,7 +5,6 @@ import "leaflet.markercluster/dist/MarkerCluster.css";
 import "leaflet.markercluster/dist/MarkerCluster.Default.css";
 import "leaflet.markercluster";
 
-// Define your locations array
 const locations = [
   {
     lat: 12.989380979635508,
