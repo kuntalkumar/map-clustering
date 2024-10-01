@@ -26,9 +26,9 @@ To integrate Leaflet into a non-React project:
    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
 
 
-Set up a map container in your HTML:
+2. Set up a map container in your HTML:
 
-<div id="map" style="height: 400px;"></div>
+``` <div id="map" style="height: 400px;"></div>
 Initialize your map with JavaScript:
 
 const map = L.map('map').setView([51.505, -0.09], 13);
