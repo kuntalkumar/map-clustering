@@ -99,15 +99,13 @@ const MiniMap = () => {
   const [startPoint, setStartPoint] = useState(null);
   const [endPoint, setEndPoint] = useState(null);
   const [waypoints, setWaypoints] = useState([]);
-  const routingControlRef = useRef(null); // Reference to the routing control
-  const [distance, setDistance] = useState(null); // State to store the distance
-  const [showSelectionModal, setShowSelectionModal] = useState(false); // State to control modal visibility
+  const routingControlRef = useRef(null); 
+  const [distance, setDistance] = useState(null);
+  const [showSelectionModal, setShowSelectionModal] = useState(false);
 
   useEffect(() => {
-    // Initialize the main map only once
     if (mapRef.current !== null) return;
 
-    // Initialize the main map
     mapRef.current = L.map("mainMap").setView(
       [12.989380979635508, 77.5929541095342],
       12
@@ -125,7 +123,6 @@ const MiniMap = () => {
 
     const markers = L.markerClusterGroup();
 
-    // Add markers to the map
     locations.forEach((location) => {
       const marker = L.marker([location.lat, location.lng], {
         icon: customIcon,
@@ -137,7 +134,6 @@ const MiniMap = () => {
 
     mapRef.current.addLayer(markers);
 
-    // Initialize the minimap
     if (minimapRef.current === null) {
       minimapRef.current = L.map("minimap", {
         center: mapRef.current.getCenter(),
@@ -164,7 +160,6 @@ const MiniMap = () => {
   }, []);
 
   const handleMarkerClick = (location) => {
-    // Handle marker click logic here if needed
     console.log(location.place);
   };
 
@@ -184,30 +179,27 @@ const MiniMap = () => {
   };
 
   const calculateRoute = (destination, origin) => {
-    // Remove any existing routing control if it exists
     if (routingControlRef.current) {
       routingControlRef.current.remove();
     }
 
-    // Add routing control to calculate the route
     routingControlRef.current = L.Routing.control({
       waypoints: [
-        L.latLng(origin.lat, origin.lng), // Starting point
-        L.latLng(destination.lat, destination.lng), // Destination
+        L.latLng(origin.lat, origin.lng),
+        L.latLng(destination.lat, destination.lng), 
       ],
       lineOptions: {
         styles: [{ color: "#b7eb0e", weight: 4 }],
       },
-      createMarker: () => null, // Do not create markers for waypoints
-      routeWhileDragging: true, // Allow dragging of route
+      createMarker: () => null, 
+      routeWhileDragging: true,
     }).addTo(mapRef.current);
 
-    // Calculate the distance between the two points
     routingControlRef.current.on("routesfound", (e) => {
       const routes = e.routes;
       const summary = routes[0].summary;
-      const totalDistance = summary.totalDistance / 1000; // Convert to km
-      setDistance(totalDistance); // Store distance in state
+      const totalDistance = summary.totalDistance / 1000;
+      setDistance(totalDistance);
     });
   };
 
@@ -260,7 +252,7 @@ const MiniMap = () => {
       )}
       <div style={{ position: "relative" }}>
         {/* Main Map */}
-        <div id="mainMap" style={{ height: "620px", width: "100%" }}></div>
+        <div id="mainMap" style={{ height: "80vh", width: "100%" }}></div>
         {/* Minimap */}
         <div
           id="minimap"
