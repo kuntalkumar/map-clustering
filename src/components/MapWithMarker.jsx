@@ -129,8 +129,7 @@ const MapWithMarkers = () => {
   return (
     <div>
       <h2 style={{ display: "flex", justifyContent: "center" }}>
-        Map for kelsa office
-      </h2>
+        Map Clustering</h2>
       <div id="map" style={{ height: "620px", width: "100%" }}></div>;
     </div>
   );
