@@ -190,7 +190,7 @@ const MiniMap = () => {
         L.latLng(destination.lat, destination.lng),
       ],
       lineOptions: {
-        styles: [{ color: "#b7eb0e", weight: 4 }],
+        styles: [{ color: "red", weight: 4 }],
       },
       createMarker: () => null, // No markers on waypoints
       routeWhileDragging: true,
